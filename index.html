@@ -1,75 +1,95 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>𓋹 Portfólio 2027 | Reino do Conhecimento</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Portfólio 2027 | Reino do Conhecimento</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --gold: #d6a947;
-    --light: #ffe5a0;
-    --dark: #090b10;
-    --panel: #191b20;
-    --muted: #b5aa92;
+    --teal: #087c78;
+    --deep: #073f40;
+    --deep2: #092c2e;
+    --aqua: #65d3c4;
+    --gold: #c79b45;
+    --gold2: #f0d18a;
+    --paper: #ead9b5;
+    --cream: #f8efd9;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    background: var(--dark);
-    color: #f2e7d0;
-    font-family: Inter, sans-serif;
+    font-family: "DM Sans", sans-serif;
+    background: var(--deep2);
+    color: var(--cream);
     overflow-x: hidden;
 }
 
-/* PARTICULAS */
+button, input, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* PARTÍCULAS */
 
 #particles {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 5;
+    z-index: 20;
     overflow: hidden;
 }
 
 .particle {
     position: absolute;
-    bottom: -20px;
-    background: var(--gold);
+    bottom: -15px;
     border-radius: 50%;
+    background: var(--gold2);
     box-shadow: 0 0 12px var(--gold);
-    animation: rise linear infinite;
+    animation: floatUp linear infinite;
     opacity: 0;
 }
 
-@keyframes rise {
-    0% { transform: translateY(0) scale(.5); opacity: 0; }
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(.5);
+        opacity: 0;
+    }
     15% { opacity: .8; }
     85% { opacity: .5; }
-    100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+    100% {
+        transform: translateY(-110vh) scale(1.3);
+        opacity: 0;
+    }
 }
 
 /* LUZ DO CURSOR */
 
 #cursorLight {
     position: fixed;
-    width: 350px;
-    height: 350px;
-    left: 0;
-    top: 0;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, #d6a94718, transparent 70%);
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
     pointer-events: none;
-    z-index: 4;
+    z-index: 19;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, #52cdb51a, transparent 70%);
 }
 
 /* VINHETA */
@@ -77,15 +97,16 @@ body {
 .intro {
     position: fixed;
     inset: 0;
-    z-index: 10000;
-    background: radial-gradient(ellipse at center, #46351b, #16130e 50%, #050609 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
     overflow: hidden;
-    perspective: 1000px;
-    transition: opacity 1.5s, visibility 1.5s;
+    background:
+        radial-gradient(ellipse at 50% 42%,
+        #176e68 0%,
+        #0a4646 38%,
+        #071f22 100%);
+    transition: opacity 1.2s, visibility 1.2s;
 }
 
 .intro.hidden {
@@ -94,53 +115,163 @@ body {
     pointer-events: none;
 }
 
-.sun {
+.intro::before {
+    content: "";
     position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    top: 12%;
-    background: radial-gradient(circle, #fff3bd, #e8b54f 45%, transparent 75%);
-    box-shadow: 0 0 100px 40px #d6a94755;
-    animation: sunGlow 4s infinite alternate;
+    inset: 14px;
+    border: 1px solid #d5b56d99;
+    outline: 1px solid #d5b56d33;
+    outline-offset: 8px;
 }
 
-@keyframes sunGlow {
-    to { transform: scale(1.15); opacity: .7; }
-}
-
-.pyramids {
+.intro::after {
+    content: "𓂀 𓋹 𓆣 𓇳 𓊖 𓏏 𓃭 𓆙";
     position: absolute;
-    bottom: 0;
+    top: 24px;
     width: 100%;
-    height: 50%;
-}
-
-.pyramids svg {
-    width: 100%;
-    height: 100%;
-}
-
-.hieroglyphs {
-    position: absolute;
-    color: #d6a947;
-    opacity: .4;
-    font-size: 22px;
+    text-align: center;
+    color: #f0d18a99;
     letter-spacing: 20px;
-    white-space: nowrap;
-    animation: hieroglyph 25s linear infinite;
+    font: 18px Cinzel, serif;
 }
 
-.hieroglyphs.top { top: 8%; }
-
-.hieroglyphs.bottom {
-    bottom: 8%;
-    animation-direction: reverse;
+.intro-paper {
+    position: absolute;
+    inset: 0;
+    opacity: .22;
+    background-image:
+        radial-gradient(#f3dba1 .7px, transparent .8px),
+        linear-gradient(90deg, transparent 49%, #e5c88b18 50%, transparent 51%);
+    background-size: 13px 13px, 100% 100%;
 }
 
-@keyframes hieroglyph {
-    from { transform: translateX(30%); }
-    to { transform: translateX(-30%); }
+.intro-glow {
+    position: absolute;
+    width: min(68vw, 650px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #53cdb51c;
+    box-shadow: 0 0 100px 35px #2cb9a522;
+}
+
+/* ELEMENTOS DECORATIVOS DA VINHETA */
+
+.intro-art {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.moon {
+    position: absolute;
+    top: 9%;
+    right: 12%;
+    font-size: clamp(65px, 12vw, 150px);
+    color: var(--gold2);
+    text-shadow: 0 0 35px #e5c27666;
+}
+
+.cat {
+    position: absolute;
+    left: 4%;
+    bottom: 5%;
+    font-size: clamp(130px, 27vw, 310px);
+    line-height: 1;
+    color: #081d20;
+    text-shadow: 3px 3px 0 #d2a34e, 0 0 35px #d0a34e66;
+    transform: rotate(-5deg);
+}
+
+.ankh {
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+    font-size: clamp(100px, 20vw, 220px);
+    color: #d8b15e;
+    text-shadow: 0 0 18px #eacb83aa;
+    transform: rotate(9deg);
+}
+
+.ornament {
+    position: absolute;
+    color: #48c4b4;
+    font-size: clamp(60px, 11vw, 130px);
+    opacity: .8;
+}
+
+.ornament.one {
+    left: 24%;
+    top: 8%;
+    transform: rotate(-20deg);
+}
+
+.ornament.two {
+    right: 26%;
+    bottom: 13%;
+    transform: rotate(35deg);
+}
+
+.intro-center {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 30px 25px;
+    max-width: 760px;
+    animation: fadeUp 1.5s both;
+}
+
+.intro-kicker {
+    font: 600 11px Cinzel, serif;
+    letter-spacing: 5px;
+    color: var(--aqua);
+    margin-bottom: 18px;
+}
+
+.intro-center h1 {
+    font: 700 clamp(35px, 7vw, 78px) "Playfair Display", serif;
+    color: #f5e5bf;
+    text-shadow: 0 4px 25px #031c1c;
+}
+
+.intro-center .subtitle {
+    margin-top: 14px;
+    color: var(--gold2);
+    letter-spacing: 4px;
+    font: 500 11px Cinzel, serif;
+}
+
+.intro-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 24px auto 0;
+    color: var(--gold2);
+}
+
+.intro-divider::before,
+.intro-divider::after {
+    content: "";
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.enter {
+    margin-top: 34px;
+    padding: 15px 30px;
+    border: 1px solid var(--gold2);
+    background: linear-gradient(120deg, #b17b32, #e4c477, #a87830);
+    color: #172c29;
+    font: 700 11px Cinzel, serif;
+    letter-spacing: 2px;
+    box-shadow: 0 0 28px #d6ad5b44;
+    transition: .35s;
+}
+
+.enter:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 38px #e7c77a99;
 }
 
 /* PORTAS */
@@ -150,16 +281,26 @@ body {
     top: 0;
     height: 100%;
     width: 50%;
-    background: repeating-linear-gradient(
-        90deg,
-        #543b19 0px,
-        #c49a45 5px,
-        #6e4b1e 10px,
-        #d9ad58 13px
-    );
-    border: 5px solid #e8bd60;
-    z-index: 3;
-    transition: transform 2s cubic-bezier(.7,0,.2,1);
+    z-index: 4;
+    transition: transform 2s cubic-bezier(.72, 0, .18, 1);
+    border: 8px ridge #c49b50;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #174e4b 0 10px,
+            #c19a4d 11px 14px,
+            #0b3939 16px 26px
+        ),
+        linear-gradient(#0a4543, #071f22);
+}
+
+.door::before {
+    content: "𓂀 𓋹 𓆣";
+    position: absolute;
+    top: 43%;
+    font: clamp(24px, 4vw, 50px) Cinzel, serif;
+    color: #e5c77e;
+    text-shadow: 0 0 15px #e5c77e66;
 }
 
 .door.left {
@@ -167,154 +308,123 @@ body {
     transform-origin: left center;
 }
 
+.door.left::before {
+    right: 12%;
+}
+
 .door.right {
     right: 0;
     transform-origin: right center;
 }
 
+.door.right::before {
+    left: 12%;
+}
+
 .intro.opening .door.left {
-    transform: perspective(700px) rotateY(-105deg);
+    transform: perspective(900px) rotateY(-108deg);
 }
 
 .intro.opening .door.right {
-    transform: perspective(700px) rotateY(105deg);
+    transform: perspective(900px) rotateY(108deg);
 }
 
-/* CORREÇÃO PRINCIPAL: CONTEÚDO ACIMA DAS PORTAS */
-
-.intro-content {
-    position: relative;
-    z-index: 4;
-    text-align: center;
-    margin-top: 70px;
-}
-
-.eye {
-    font-size: 75px;
-    color: var(--light);
-    text-shadow: 0 0 35px var(--gold);
-    animation: eyeGlow 3s infinite alternate;
-}
-
-@keyframes eyeGlow {
-    to {
-        text-shadow: 0 0 65px #ffe3a0;
-        transform: scale(1.08);
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
-}
-
-.intro h1 {
-    font: 700 clamp(30px, 6vw, 70px) Cinzel, serif;
-    letter-spacing: 7px;
-    color: var(--light);
-    text-shadow: 0 0 35px #d6a947;
-    animation: appear 2s ease;
-}
-
-.intro p {
-    color: #e2c27b;
-    letter-spacing: 5px;
-    font-size: 11px;
-    margin-top: 15px;
-}
-
-.enter {
-    margin-top: 45px;
-    padding: 17px 38px;
-    border: 1px solid var(--gold);
-    background: linear-gradient(120deg, #6b4b1e, #d6a947, #8a6226);
-    color: #100d08;
-    font-weight: bold;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: .4s;
-    box-shadow: 0 0 20px #d6a94744;
-}
-
-.enter:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 45px #d6a947;
-}
-
-@keyframes appear {
-    from { opacity: 0; transform: translateY(35px); }
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* SITE */
 
-#site {
+.site {
     display: none;
-    position: relative;
-    z-index: 1;
+    min-height: 100vh;
+    background-color: var(--deep2);
+    background-image:
+        radial-gradient(ellipse at 85% 8%, #0d706c33, transparent 35%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c59a4b' stroke-opacity='.09' stroke-width='1'%3E%3Cpath d='M90 8c22 28 22 48 0 70-22-22-22-42 0-70Zm0 94c22 28 22 48 0 70-22-22-22-42 0-70ZM8 90c28-22 48-22 70 0-22 22-42 22-70 0Zm94 0c28-22 48-22 70 0-22 22-42 22-70 0Z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 header {
-    background: #11141a;
-    border-bottom: 2px solid #b68b40;
-    padding: 22px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 30;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 15px;
+    padding: 18px 5%;
+    background: #062e30ef;
+    border-bottom: 1px solid #c59a4b88;
+    backdrop-filter: blur(12px);
 }
 
 .logo {
-    font: 700 21px Cinzel, serif;
-    color: var(--light);
-    letter-spacing: 3px;
+    font: 700 19px Cinzel, serif;
+    letter-spacing: 2px;
+    color: #f1d99e;
 }
 
-.header-right {
-    color: #c8a765;
-    font-size: 11px;
+.logo span {
+    color: var(--aqua);
+}
+
+.header-note {
+    font: 10px Cinzel, serif;
     letter-spacing: 2px;
+    color: #b9d9c9;
 }
 
 .layout {
     display: flex;
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 66px);
 }
 
 aside {
-    width: 250px;
+    width: 245px;
     flex-shrink: 0;
-    background: #12151b;
-    border-right: 1px solid #a87b34;
-    padding: 30px 18px;
+    padding: 28px 17px;
+    background: #082e30e8;
+    border-right: 1px solid #c59a4b55;
 }
 
 .aside-title {
-    color: var(--gold);
-    font: 600 14px Cinzel, serif;
+    font: 600 11px Cinzel, serif;
     letter-spacing: 3px;
-    margin: 15px 10px 25px;
+    color: var(--gold2);
+    margin: 10px 12px 22px;
 }
 
 aside a {
     display: block;
     text-decoration: none;
-    color: #bdb4a3;
-    padding: 15px;
-    margin: 7px 0;
+    color: #c5d3c4;
+    padding: 13px 14px;
+    margin: 6px 0;
     border: 1px solid transparent;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 13px;
-    transition: .35s;
+    transition: .3s;
 }
 
-aside a:hover, aside a.active {
-    color: var(--light);
-    background: #d6a94712;
-    border-color: #d6a94766;
-    box-shadow: inset 3px 0 var(--gold);
+aside a:hover,
+aside a.active {
+    color: #fff0c9;
+    background: #d3aa5520;
+    border-color: #c59a4b77;
     transform: translateX(4px);
 }
 
 main {
     flex: 1;
     min-width: 0;
-    padding: 38px;
+    padding: 34px clamp(18px, 4vw, 55px) 60px;
 }
 
 /* BOAS-VINDAS */
@@ -322,55 +432,58 @@ main {
 .welcome {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(120deg, #252017, #181a20);
-    border: 1px solid #c49a45;
-    padding: 40px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 35px #d6a9470c;
+    min-height: 250px;
+    padding: 42px 38px;
+    margin-bottom: 28px;
+    border: 1px solid #c59a4b;
+    background: linear-gradient(110deg, #0b514eeb, #0b3738ee);
+    box-shadow: 0 15px 45px #0003;
 }
 
 .welcome::after {
-    content: "𓂀";
+    content: "𓃭";
     position: absolute;
-    right: 35px;
-    top: 10px;
-    font-size: 130px;
-    color: var(--gold);
-    opacity: .10;
+    right: 30px;
+    bottom: -35px;
+    font: 190px Cinzel, serif;
+    color: #e2bf6b;
+    opacity: .12;
 }
 
-.welcome small {
-    color: var(--gold);
+.kicker {
+    font: 600 10px Cinzel, serif;
     letter-spacing: 4px;
-    font-size: 10px;
+    color: var(--aqua);
 }
 
 .welcome h2 {
-    font: 600 28px Cinzel, serif;
-    color: var(--light);
-    margin: 18px 0;
+    position: relative;
+    z-index: 1;
+    margin: 17px 0 12px;
+    font: 600 clamp(26px, 4vw, 39px) "Playfair Display", serif;
+    color: #f8e8bf;
 }
 
 .welcome p {
-    max-width: 600px;
-    color: var(--muted);
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    color: #d3dfcf;
     font-size: 13px;
     line-height: 1.9;
 }
 
-/* ESCARAVELHO */
-
-.scarab {
-    font-size: 65px;
+.motif {
     display: inline-block;
-    color: #e8bd60;
-    filter: drop-shadow(0 0 15px #d6a947);
-    animation: scarabFloat 4s ease-in-out infinite;
+    margin-top: 20px;
+    color: var(--gold2);
+    font-size: 29px;
+    animation: sway 4s ease-in-out infinite;
 }
 
-@keyframes scarabFloat {
-    0%,100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg) translateY(0); }
+    50% { transform: rotate(5deg) translateY(-8px); }
 }
 
 /* CARDS */
@@ -378,17 +491,22 @@ main {
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 45px;
+    gap: 16px;
+    margin-bottom: 42px;
 }
 
 .card {
     position: relative;
-    overflow: hidden;
-    padding: 25px;
-    background: linear-gradient(145deg, #22252b, #14171d);
-    border: 1px solid #a87b344d;
-    transition: .4s;
+    padding: 23px;
+    background: linear-gradient(145deg, #104b49, #092f31);
+    border: 1px solid #b88d45a8;
+    transition: .35s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px #0004;
+    border-color: var(--gold2);
 }
 
 .card::after {
@@ -396,108 +514,100 @@ main {
     position: absolute;
     right: 15px;
     top: 10px;
-    font-size: 35px;
-    color: var(--gold);
-    opacity: .4;
-}
-
-.card:hover {
-    border-color: var(--light);
-    transform: translateY(-7px);
-    box-shadow: 0 10px 35px #d6a94725;
+    color: var(--gold2);
+    font-size: 25px;
 }
 
 .card span {
     font-size: 12px;
-    color: var(--muted);
+    color: #c5d8c9;
 }
 
 .card h2 {
-    font: 700 36px Cinzel, serif;
-    color: var(--light);
-    margin-top: 15px;
-    text-shadow: 0 0 15px #d6a94755;
+    margin-top: 12px;
+    font: 700 34px Cinzel, serif;
+    color: #f0d18a;
 }
 
-/* TITULOS */
+/* TÍTULOS */
 
 .section-title {
-    font: 600 21px Cinzel, serif;
-    color: var(--light);
-    margin-bottom: 10px;
+    font: 600 22px "Playfair Display", serif;
+    color: #f0dcae;
+    margin-bottom: 8px;
 }
 
 .subtitle {
-    color: #aaa08e;
     font-size: 12px;
-    margin-bottom: 25px;
+    color: #afc4b5;
+    margin-bottom: 22px;
 }
 
-/* EXERCICIOS */
+/* EXERCÍCIOS */
 
 .exercicios {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
 }
 
 .exercicio {
     position: relative;
-    padding: 25px;
-    background: linear-gradient(145deg, #20232a, #14171d);
-    border: 1px solid #b68b4055;
-    transition: .4s;
-}
-
-.exercicio::before {
-    content: "𓆣";
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 35px;
-    color: var(--gold);
-    opacity: .35;
+    padding: 23px;
+    background: #0b3939;
+    border: 1px solid #b88d4577;
+    transition: .35s;
 }
 
 .exercicio:hover {
-    transform: translateY(-5px);
-    border-color: var(--light);
-    box-shadow: 0 10px 25px #d6a94720;
+    transform: translateY(-4px);
+    border-color: var(--aqua);
+}
+
+.exercicio::after {
+    content: "𓆣";
+    position: absolute;
+    right: 16px;
+    top: 13px;
+    color: #e0bd70;
+    font-size: 27px;
+    opacity: .55;
 }
 
 .exercicio h3 {
     font: 600 16px Cinzel, serif;
-    color: var(--light);
-    margin-bottom: 15px;
+    color: #f2d99e;
+    margin-bottom: 12px;
 }
 
 .exercicio p {
-    color: #b9af9e;
     font-size: 13px;
+    color: #c2d0c3;
     line-height: 1.7;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .status {
     display: inline-block;
-    padding: 8px 12px;
-    background: #58401c;
-    color: #ffdc92;
-    font-size: 11px;
-    border: 1px solid #b68b40;
+    padding: 7px 10px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    background: #654b25;
+    color: #ffe3a0;
+    border: 1px solid #c59a4b;
 }
 
 .corrigido {
-    background: #24432f;
-    color: #b8e4a9;
-    border-color: #67956b;
+    background: #174f43;
+    color: #b9edcf;
+    border-color: #4eaa8b;
 }
 
 .avaliacao {
-    border-top: 1px solid #c49a4533;
-    padding-top: 15px;
-    margin-top: 18px;
-    color: #b9af9e;
+    border-top: 1px solid #c59a4b55;
+    padding-top: 13px;
+    margin-top: 15px;
+    color: #b6c8ba;
     font-size: 12px;
     line-height: 2;
 }
@@ -507,97 +617,115 @@ main {
 .timeline {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin-top: 25px;
+    gap: 12px;
+    margin-top: 22px;
 }
 
 .month {
-    background: linear-gradient(145deg, #282117, #171a20);
-    border: 1px solid #a87b3455;
-    padding: 20px 12px;
+    padding: 18px 10px;
     text-align: center;
-    color: #e8c77d;
-    font-family: Cinzel, serif;
-    cursor: pointer;
+    background: #0b4140;
+    border: 1px solid #b88d4577;
+    color: #f0d18a;
+    font: 600 12px Cinzel, serif;
     transition: .3s;
-}
-
-.month:hover, .month.selected {
-    border-color: #ffe5a0;
-    background: #49351b;
-    box-shadow: 0 0 20px #d6a94735;
-    transform: translateY(-4px);
 }
 
 .month small {
     display: block;
-    color: #b5aa92;
-    margin-top: 8px;
-    font-family: Inter, sans-serif;
-    font-size: 10px;
+    margin-top: 7px;
+    color: #b8c9ba;
+    font: 10px "DM Sans", sans-serif;
+}
+
+.month:hover,
+.month.selected {
+    background: #14645d;
+    border-color: var(--gold2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px #0003;
 }
 
 /* AVALIAÇÕES */
 
 .correction {
-    background: linear-gradient(135deg, #2b2418, #171a20);
-    border: 2px solid #b68b40;
-    padding: 25px;
-    position: relative;
-    margin-top: 25px;
+    margin-top: 22px;
+    padding: 24px;
+    background: linear-gradient(135deg, #0d514c, #092f31);
+    border: 1px solid var(--gold);
 }
 
 .correction h3 {
-    font: 600 17px Cinzel, serif;
-    color: #ffe5a0;
-    margin-bottom: 18px;
+    font: 600 16px Cinzel, serif;
+    color: #f0d18a;
+    margin-bottom: 12px;
 }
 
 .correction p {
-    color: #c8b998;
     font-size: 13px;
-    line-height: 1.8;
+    line-height: 1.7;
+    color: #c6d7c8;
 }
 
-.correction input, .correction textarea {
+.correction input,
+.correction textarea {
     width: 100%;
-    background: #11141a;
-    color: white;
-    border: 1px solid #9d773a;
-    padding: 12px;
     margin-top: 12px;
-    font: inherit;
+    padding: 12px;
+    background: #062a2c;
+    color: white;
+    border: 1px solid #a98242;
     outline: none;
 }
 
-.correction input:focus, .correction textarea:focus {
-    border-color: #ffe5a0;
-    box-shadow: 0 0 10px #d6a94733;
+.correction input:focus,
+.correction textarea:focus {
+    border-color: var(--aqua);
+    box-shadow: 0 0 0 2px #65d3c433;
 }
 
-/* BOTÃO */
-
 .gold-button {
-    margin-top: 15px;
-    background: linear-gradient(120deg, #74501c, #d6a947);
-    color: #100d08;
-    border: 1px solid #ffe5a0;
-    padding: 12px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .3s;
+    margin-top: 14px;
+    padding: 12px 19px;
+    background: linear-gradient(110deg, #b1843c, #ead08a);
+    border: 1px solid #f7e2a8;
+    color: #173431;
+    font: 700 10px Cinzel, serif;
+    letter-spacing: 1px;
 }
 
 .gold-button:hover {
-    box-shadow: 0 0 25px #d6a94788;
+    filter: brightness(1.1);
     transform: translateY(-2px);
 }
 
-/* ANIMAÇÕES DE ROLAGEM */
+/* PROGRESSO */
+
+.progress-card {
+    padding: 24px;
+    background: #0b4140;
+    border: 1px solid #b88d4577;
+}
+
+.progress-track {
+    height: 10px;
+    margin-top: 18px;
+    background: #052527;
+    border: 1px solid #a9824255;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #087c78, #e5c477);
+    transition: width 1s;
+}
+
+/* ANIMAÇÃO DE ROLAGEM */
 
 .reveal {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(22px);
     transition: opacity .8s, transform .8s;
 }
 
@@ -609,35 +737,90 @@ main {
 /* RODAPÉ */
 
 footer {
-    padding: 30px;
     text-align: center;
-    background: #11141a;
-    border-top: 2px solid #a87b34;
-    color: #c49a45;
-    font: 12px Cinzel, serif;
-    letter-spacing: 3px;
+    padding: 26px 15px;
+    background: #062729;
+    border-top: 1px solid #c59a4b77;
+    color: #d9bd7c;
+    font: 10px Cinzel, serif;
+    letter-spacing: 2px;
 }
 
-/* RESPONSIVO */
+/* RESPONSIVIDADE */
 
 @media(max-width:850px) {
-    .layout { flex-direction: column; }
+    .layout {
+        flex-direction: column;
+    }
 
     aside {
         width: 100%;
         display: flex;
         overflow-x: auto;
-        padding: 10px;
-        gap: 5px;
+        padding: 9px;
+        gap: 4px;
     }
 
-    .aside-title { display: none; }
-    aside a { white-space: nowrap; }
-    main { padding: 22px; }
-    .cards { grid-template-columns: 1fr; }
-    .exercicios { grid-template-columns: 1fr; }
-    header { flex-wrap: wrap; }
-    .timeline { grid-template-columns: repeat(2, 1fr); }
+    .aside-title {
+        display: none;
+    }
+
+    aside a {
+        white-space: nowrap;
+        font-size: 12px;
+        padding: 11px;
+    }
+
+    main {
+        padding: 22px 16px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .exercicios {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header {
+        padding: 15px 18px;
+    }
+
+    .header-note {
+        font-size: 8px;
+    }
+}
+
+@media(max-width:480px) {
+    .welcome {
+        padding: 28px 22px;
+    }
+
+    .intro-art .cat {
+        left: -5%;
+        bottom: 4%;
+    }
+
+    .intro-art .ankh {
+        right: 0;
+    }
+
+    .intro-center {
+        padding: 20px;
+    }
+
+    .intro-center .subtitle {
+        letter-spacing: 2px;
+    }
+
+    .logo {
+        font-size: 15px;
+    }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -652,43 +835,50 @@ footer {
 
 <body>
 
-<div id="particles"></div>
-<div id="cursorLight"></div>
+<div id="particles" aria-hidden="true"></div>
+<div id="cursorLight" aria-hidden="true"></div>
 
-<!-- VINHETA -->
+<!-- VINHETA DE ABERTURA -->
 
-<section class="intro" id="intro">
+<section class="intro" id="intro" aria-label="Abertura do portfólio">
 
-    <div class="sun"></div>
+    <div class="intro-paper"></div>
+    <div class="intro-glow"></div>
 
-    <div class="hieroglyphs top">
-        𓂀 𓋹 𓆣 𓇳 𓊖 𓏏 𓂀 𓋹
+    <div class="intro-art" aria-hidden="true">
+
+        <div class="moon">☼</div>
+
+        <div class="cat">𓃠</div>
+
+        <div class="ankh">☥</div>
+
+        <div class="ornament one">❧</div>
+
+        <div class="ornament two">❦</div>
+
     </div>
 
-    <div class="hieroglyphs bottom">
-        𓆣 𓇳 𓊖 𓏏 𓂀 𓋹 𓆣
-    </div>
+    <div class="intro-center">
 
-    <div class="pyramids">
-        <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMax slice">
-            <path d="M0 350 L260 350 L130 100 Z" fill="#8d682e"/>
-            <path d="M130 100 L260 350 L190 350 Z" fill="#d1a653"/>
-            <path d="M250 350 L620 350 L435 20 Z" fill="#74552b"/>
-            <path d="M435 20 L620 350 L530 350 Z" fill="#d6aa54"/>
-            <path d="M650 350 L940 350 L795 85 Z" fill="#80602f"/>
-            <path d="M795 85 L940 350 L875 350 Z" fill="#d6aa54"/>
-            <path d="M0 350 Q500 310 1000 350 L1000 400 L0 400 Z" fill="#181719"/>
-        </svg>
-    </div>
+        <div class="intro-kicker">
+            ✦ UMA JORNADA ENTRE HISTÓRIA E CONHECIMENTO ✦
+        </div>
 
-    <div class="intro-content">
-        <div class="eye">𓂀</div>
         <h1>PORTFÓLIO 2027</h1>
-        <p>DESENVOLVIMENTO DE SISTEMAS</p>
+
+        <div class="subtitle">
+            DESENVOLVIMENTO DE SISTEMAS
+        </div>
+
+        <div class="intro-divider">
+            𓂀 ✧ 𓋹
+        </div>
 
         <button class="enter" id="entrar">
-            ✧ ENTRAR NO TEMPLO ✧
+            ABRIR OS PORTÕES DO CONHECIMENTO
         </button>
+
     </div>
 
     <div class="door left"></div>
@@ -698,39 +888,66 @@ footer {
 
 <!-- SITE PRINCIPAL -->
 
-<div id="site">
+<div class="site" id="site">
 
 <header>
-    <div class="logo">𓋹 ARQUIVOS DO EGITO</div>
-    <div class="header-right">TEMPLO DO CONHECIMENTO • 2027</div>
+
+    <div class="logo">
+        𓋹 <span>REINO</span> DO CONHECIMENTO
+    </div>
+
+    <div class="header-note">
+        ARQUIVOS ACADÊMICOS • 2027
+    </div>
+
 </header>
 
 <div class="layout">
 
 <aside>
-    <div class="aside-title">𓂀 EXPLORAR</div>
 
-    <a class="active" href="#inicio">𓇳 Visão geral</a>
+    <div class="aside-title">
+        ✧ NAVEGAÇÃO ✧
+    </div>
+
+    <a class="active" href="#inicio">𓂀 Visão geral</a>
+
     <a href="#exercicios">𓆣 Exercícios</a>
-    <a href="#timeline">𓋹 Linha do tempo</a>
-    <a href="#avaliacoes">𓊖 Avaliações</a>
-    <a href="#progresso">𓇳 Minha evolução</a>
+
+    <a href="#timeline">☼ Linha do tempo</a>
+
+    <a href="#avaliacoes">𓋹 Avaliações</a>
+
+    <a href="#progresso">✧ Minha evolução</a>
+
 </aside>
 
 <main>
 
-<section class="welcome reveal" id="inicio">
-    <small>𓂀 CÂMARA DO CONHECIMENTO</small>
+<!-- BOAS-VINDAS -->
 
-    <h2>Bem-vindo à sua jornada!</h2>
+<section class="welcome reveal" id="inicio">
+
+    <div class="kicker">
+        𓂀 CÂMARA DO CONHECIMENTO
+    </div>
+
+    <h2>Uma jornada de descobertas.</h2>
 
     <p>
-        Cada atividade representa uma descoberta.
-        Este espaço reúne os registros, desafios e
-        conquistas da jornada de aprendizado em
-        Desenvolvimento de Sistemas durante 2027.
+        Este espaço reúne atividades, registros e conquistas
+        construídos ao longo de 2027. Cada exercício é uma
+        nova peça dessa jornada: um caminho de curiosidade,
+        prática e evolução em Desenvolvimento de Sistemas.
     </p>
+
+    <div class="motif" aria-hidden="true">
+        𓃠 ✧ 𓋹
+    </div>
+
 </section>
+
+<!-- INDICADORES -->
 
 <section class="cards reveal">
 
@@ -745,88 +962,165 @@ footer {
     </div>
 
     <div class="card">
-        <span>𓇳 Pendentes de correção</span>
+        <span>☼ Pendentes de correção</span>
         <h2 id="pendentes">01</h2>
     </div>
 
 </section>
 
+<!-- EXERCÍCIOS -->
+
 <section id="exercicios" class="reveal">
 
-    <h2 class="section-title">𓆣 Registros de atividades</h2>
+    <h2 class="section-title">
+        𓆣 Registros de atividades
+    </h2>
 
     <p class="subtitle">
-        O conhecimento é construído a cada descoberta.
+        Cada atividade guarda uma etapa do aprendizado.
     </p>
 
-    <div class="exercicios" id="listaExercicios">
+    <div class="exercicios">
 
         <article class="exercicio">
+
             <h3>Exercício 01 — HTML</h3>
-            <p>Primeira atividade do portfólio acadêmico.</p>
-            <span class="status">Aguardando correção</span>
+
+            <p>
+                Primeira atividade do portfólio acadêmico.
+            </p>
+
+            <span class="status">
+                AGUARDANDO CORREÇÃO
+            </span>
 
             <div class="avaliacao">
                 Nota: Aguardando avaliação
                 <br>
                 Professor: Sem observações.
             </div>
+
         </article>
 
         <article class="exercicio">
+
             <h3>Exercício 02 — CSS</h3>
-            <p>Atividade de estilização e estrutura visual.</p>
-            <span class="status corrigido">Corrigido</span>
+
+            <p>
+                Atividade de estilização e estrutura visual.
+            </p>
+
+            <span class="status corrigido">
+                CORRIGIDO
+            </span>
 
             <div class="avaliacao">
                 Nota: 10,0
                 <br>
                 Professor: Excelente atividade!
             </div>
+
         </article>
 
     </div>
+
 </section>
 
-<section id="timeline" class="reveal" style="margin-top:50px">
+<!-- LINHA DO TEMPO -->
 
-    <div class="scarab">𓆣</div>
+<section id="timeline" class="reveal" style="margin-top:48px">
 
-    <h2 class="section-title">𓇳 Jornada de 2027</h2>
+    <h2 class="section-title">
+        ☼ Jornada de 2027
+    </h2>
 
     <p class="subtitle">
-        Do primeiro ao último registro de aprendizado.
+        Escolha um mês para explorar sua trajetória.
     </p>
 
     <div class="timeline">
 
-        <button class="month" data-month="Janeiro">JANEIRO<small>01 / 2027</small></button>
-        <button class="month" data-month="Fevereiro">FEVEREIRO<small>02 / 2027</small></button>
-        <button class="month" data-month="Março">MARÇO<small>03 / 2027</small></button>
-        <button class="month" data-month="Abril">ABRIL<small>04 / 2027</small></button>
-        <button class="month" data-month="Maio">MAIO<small>05 / 2027</small></button>
-        <button class="month" data-month="Junho">JUNHO<small>06 / 2027</small></button>
-        <button class="month" data-month="Julho">JULHO<small>07 / 2027</small></button>
-        <button class="month" data-month="Agosto">AGOSTO<small>08 / 2027</small></button>
-        <button class="month" data-month="Setembro">SETEMBRO<small>09 / 2027</small></button>
-        <button class="month" data-month="Outubro">OUTUBRO<small>10 / 2027</small></button>
-        <button class="month" data-month="Novembro">NOVEMBRO<small>11 / 2027</small></button>
-        <button class="month" data-month="Dezembro">DEZEMBRO<small>12 / 2027</small></button>
+        <button class="month" data-month="Janeiro">
+            JANEIRO
+            <small>01 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Fevereiro">
+            FEVEREIRO
+            <small>02 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Março">
+            MARÇO
+            <small>03 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Abril">
+            ABRIL
+            <small>04 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Maio">
+            MAIO
+            <small>05 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Junho">
+            JUNHO
+            <small>06 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Julho">
+            JULHO
+            <small>07 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Agosto">
+            AGOSTO
+            <small>08 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Setembro">
+            SETEMBRO
+            <small>09 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Outubro">
+            OUTUBRO
+            <small>10 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Novembro">
+            NOVEMBRO
+            <small>11 / 2027</small>
+        </button>
+
+        <button class="month" data-month="Dezembro">
+            DEZEMBRO
+            <small>12 / 2027</small>
+        </button>
 
     </div>
 
-    <p id="mesSelecionado" style="margin-top:20px;color:#e8c77d">
+    <p id="mesSelecionado" aria-live="polite"
+       style="margin-top:18px;color:#e8cf91;font-size:13px">
+
         Selecione um mês para consultar os registros.
+
     </p>
 
 </section>
 
-<section id="avaliacoes" class="reveal" style="margin-top:50px">
+<!-- AVALIAÇÕES -->
 
-    <h2 class="section-title">𓋹 Câmara das avaliações</h2>
+<section id="avaliacoes" class="reveal" style="margin-top:48px">
+
+    <h2 class="section-title">
+        𓋹 Câmara das avaliações
+    </h2>
 
     <p class="subtitle">
-        Área demonstrativa para notas e observações do professor.
+        Área demonstrativa para notas e observações.
     </p>
 
     <div class="correction">
@@ -834,43 +1128,68 @@ footer {
         <h3>REGISTRO DE CORREÇÃO</h3>
 
         <p>
-            Espaço para registrar uma avaliação de exemplo.
-            Este formulário ainda não envia informações
-            para uma conta de professor.
+            Preencha os campos para visualizar um exemplo
+            de avaliação. Este formulário é demonstrativo
+            e ainda não envia dados para uma conta de professor.
         </p>
 
-        <input type="text" id="nota" placeholder="Nota da atividade">
+        <input
+            type="text"
+            id="nota"
+            placeholder="Nota da atividade"
+            aria-label="Nota da atividade"
+        >
 
-        <textarea id="comentario" rows="4"
-            placeholder="Comentários e observações..."></textarea>
+        <textarea
+            id="comentario"
+            rows="4"
+            placeholder="Comentários e observações..."
+            aria-label="Comentários e observações"
+        ></textarea>
 
         <button class="gold-button" id="salvarAvaliacao">
             REGISTRAR EXEMPLO
         </button>
 
-        <p id="resultadoAvaliacao" style="margin-top:15px"></p>
+        <p id="resultadoAvaliacao"
+           role="status"
+           aria-live="polite"
+           style="margin-top:14px">
+        </p>
 
     </div>
 
 </section>
 
-<section id="progresso" class="reveal" style="margin-top:50px">
+<!-- PROGRESSO -->
 
-    <h2 class="section-title">𓇳 Minha evolução</h2>
+<section id="progresso" class="reveal" style="margin-top:48px">
+
+    <h2 class="section-title">
+        ✧ Minha evolução
+    </h2>
 
     <p class="subtitle">
         Cada etapa representa uma nova conquista.
     </p>
 
-    <div class="card">
-        <span>Progresso de correções</span>
-        <h2 id="percentual">50%</h2>
+    <div class="progress-card">
 
-        <div style="height:9px;background:#35302a;margin-top:18px">
-            <div id="barra"
-                style="height:100%;width:50%;background:linear-gradient(90deg,#8b6125,#ffe5a0);transition:width 1s">
-            </div>
+        <span style="font-size:12px;color:#c5d8c9">
+            Progresso de correções
+        </span>
+
+        <h2 id="percentual"
+            style="font:700 34px Cinzel,serif;color:#f0d18a;margin-top:10px">
+            50%
+        </h2>
+
+        <div class="progress-track">
+
+            <div class="progress-fill" id="barra"></div>
+
         </div>
+
     </div>
 
 </section>
@@ -879,88 +1198,90 @@ footer {
 </div>
 
 <footer>
-    𓋹 PORTFÓLIO ACADÊMICO • 2027 • DESENVOLVIMENTO DE SISTEMAS 𓋹
+    𓋹 PORTFÓLIO ACADÊMICO • 2027 •
+    DESENVOLVIMENTO DE SISTEMAS 𓋹
 </footer>
 
 </div>
 
 <script>
 
-/* ELEMENTOS */
+/* ABERTURA DAS PORTAS */
 
 const intro = document.getElementById("intro");
 const site = document.getElementById("site");
-const entrar = document.getElementById("entrar");
 
-/* VINHETA E ABERTURA DAS PORTAS */
-
-entrar.addEventListener("click", () => {
+document.getElementById("entrar").addEventListener("click", () => {
 
     intro.classList.add("opening");
 
     setTimeout(() => {
+
         intro.classList.add("hidden");
+
         site.style.display = "block";
-        iniciarAnimacoes();
-    }, 1300);
+
+        startReveal();
+
+    }, 1250);
 
     setTimeout(() => {
+
         intro.style.display = "none";
-    }, 2800);
+
+    }, 2600);
 
 });
 
-/* PARTICULAS DOURADAS */
+/* PARTÍCULAS */
 
-function criarParticulas() {
+function createParticles() {
 
     const container = document.getElementById("particles");
 
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 42; i++) {
 
-        const particula = document.createElement("div");
+        const particle = document.createElement("span");
 
-        particula.className = "particle";
+        particle.className = "particle";
 
-        const tamanho = Math.random() * 4 + 2;
+        const size = Math.random() * 4 + 2;
 
-        particula.style.width = tamanho + "px";
-        particula.style.height = tamanho + "px";
+        particle.style.width = size + "px";
+        particle.style.height = size + "px";
 
-        particula.style.left = Math.random() * 100 + "%";
+        particle.style.left = Math.random() * 100 + "%";
 
-        particula.style.animationDuration =
+        particle.style.animationDuration =
             (Math.random() * 12 + 8) + "s";
 
-        particula.style.animationDelay =
+        particle.style.animationDelay =
             (Math.random() * 12) + "s";
 
-        container.appendChild(particula);
+        container.appendChild(particle);
 
     }
 
 }
 
-criarParticulas();
+createParticles();
 
 /* LUZ DO CURSOR */
 
-const cursorLight = document.getElementById("cursorLight");
+const cursor = document.getElementById("cursorLight");
 
-document.addEventListener("mousemove", (event) => {
+document.addEventListener("mousemove", event => {
 
-    cursorLight.style.left = event.clientX + "px";
-    cursorLight.style.top = event.clientY + "px";
+    cursor.style.left = event.clientX + "px";
+    cursor.style.top = event.clientY + "px";
 
 });
 
 /* ANIMAÇÕES AO ROLAR */
 
-function iniciarAnimacoes() {
+function startReveal() {
 
-    const elementos = document.querySelectorAll(".reveal");
-
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
 
         entries.forEach(entry => {
 
@@ -976,30 +1297,31 @@ function iniciarAnimacoes() {
 
     }, { threshold: 0.12 });
 
-    elementos.forEach(elemento => {
-        observer.observe(elemento);
+    document.querySelectorAll(".reveal").forEach(element => {
+
+        observer.observe(element);
+
     });
 
 }
 
 /* LINHA DO TEMPO */
 
-const meses = document.querySelectorAll(".month");
-const mesSelecionado = document.getElementById("mesSelecionado");
+document.querySelectorAll(".month").forEach(button => {
 
-meses.forEach((mes) => {
+    button.addEventListener("click", () => {
 
-    mes.addEventListener("click", () => {
+        document.querySelectorAll(".month").forEach(item => {
 
-        meses.forEach(item => {
             item.classList.remove("selected");
+
         });
 
-        mes.classList.add("selected");
+        button.classList.add("selected");
 
-        mesSelecionado.textContent =
+        document.getElementById("mesSelecionado").textContent =
             "Você está explorando os registros de " +
-            mes.dataset.month + " de 2027.";
+            button.dataset.month + " de 2027.";
 
     });
 
@@ -1012,9 +1334,11 @@ document.getElementById("salvarAvaliacao")
 
     const nota = document.getElementById("nota").value.trim();
 
-    const comentario = document.getElementById("comentario").value.trim();
+    const comentario =
+        document.getElementById("comentario").value.trim();
 
-    const resultado = document.getElementById("resultadoAvaliacao");
+    const resultado =
+        document.getElementById("resultadoAvaliacao");
 
     if (!nota || !comentario) {
 
@@ -1031,7 +1355,7 @@ document.getElementById("salvarAvaliacao")
 
 });
 
-/* PROGRESSO DEMONSTRATIVO */
+/* INDICADOR DE PROGRESSO */
 
 const total = 2;
 const corrigidos = 1;
@@ -1044,7 +1368,17 @@ document.getElementById("percentual").textContent =
 document.getElementById("barra").style.width =
     percentual + "%";
 
+document.getElementById("totalExercicios").textContent =
+    String(total).padStart(2, "0");
+
+document.getElementById("corrigidos").textContent =
+    String(corrigidos).padStart(2, "0");
+
+document.getElementById("pendentes").textContent =
+    String(total - corrigidos).padStart(2, "0");
+
 </script>
 
 </body>
 </html>
+

@@ -1,0 +1,1050 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𓋹 Portfólio 2027 | Reino do Conhecimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --gold: #d6a947;
+    --light: #ffe5a0;
+    --dark: #090b10;
+    --panel: #191b20;
+    --muted: #b5aa92;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--dark);
+    color: #f2e7d0;
+    font-family: Inter, sans-serif;
+    overflow-x: hidden;
+}
+
+/* PARTICULAS */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    bottom: -20px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold);
+    animation: rise linear infinite;
+    opacity: 0;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(.5); opacity: 0; }
+    15% { opacity: .8; }
+    85% { opacity: .5; }
+    100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+}
+
+/* LUZ DO CURSOR */
+
+#cursorLight {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, #d6a94718, transparent 70%);
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* VINHETA */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: radial-gradient(ellipse at center, #46351b, #16130e 50%, #050609 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    perspective: 1000px;
+    transition: opacity 1.5s, visibility 1.5s;
+}
+
+.intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sun {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    top: 12%;
+    background: radial-gradient(circle, #fff3bd, #e8b54f 45%, transparent 75%);
+    box-shadow: 0 0 100px 40px #d6a94755;
+    animation: sunGlow 4s infinite alternate;
+}
+
+@keyframes sunGlow {
+    to { transform: scale(1.15); opacity: .7; }
+}
+
+.pyramids {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+}
+
+.pyramids svg {
+    width: 100%;
+    height: 100%;
+}
+
+.hieroglyphs {
+    position: absolute;
+    color: #d6a947;
+    opacity: .4;
+    font-size: 22px;
+    letter-spacing: 20px;
+    white-space: nowrap;
+    animation: hieroglyph 25s linear infinite;
+}
+
+.hieroglyphs.top { top: 8%; }
+
+.hieroglyphs.bottom {
+    bottom: 8%;
+    animation-direction: reverse;
+}
+
+@keyframes hieroglyph {
+    from { transform: translateX(30%); }
+    to { transform: translateX(-30%); }
+}
+
+/* PORTAS */
+
+.door {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: repeating-linear-gradient(
+        90deg,
+        #543b19 0px,
+        #c49a45 5px,
+        #6e4b1e 10px,
+        #d9ad58 13px
+    );
+    border: 5px solid #e8bd60;
+    z-index: 3;
+    transition: transform 2s cubic-bezier(.7,0,.2,1);
+}
+
+.door.left {
+    left: 0;
+    transform-origin: left center;
+}
+
+.door.right {
+    right: 0;
+    transform-origin: right center;
+}
+
+.intro.opening .door.left {
+    transform: perspective(700px) rotateY(-105deg);
+}
+
+.intro.opening .door.right {
+    transform: perspective(700px) rotateY(105deg);
+}
+
+/* CORREÇÃO PRINCIPAL: CONTEÚDO ACIMA DAS PORTAS */
+
+.intro-content {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.eye {
+    font-size: 75px;
+    color: var(--light);
+    text-shadow: 0 0 35px var(--gold);
+    animation: eyeGlow 3s infinite alternate;
+}
+
+@keyframes eyeGlow {
+    to {
+        text-shadow: 0 0 65px #ffe3a0;
+        transform: scale(1.08);
+    }
+}
+
+.intro h1 {
+    font: 700 clamp(30px, 6vw, 70px) Cinzel, serif;
+    letter-spacing: 7px;
+    color: var(--light);
+    text-shadow: 0 0 35px #d6a947;
+    animation: appear 2s ease;
+}
+
+.intro p {
+    color: #e2c27b;
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+.enter {
+    margin-top: 45px;
+    padding: 17px 38px;
+    border: 1px solid var(--gold);
+    background: linear-gradient(120deg, #6b4b1e, #d6a947, #8a6226);
+    color: #100d08;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .4s;
+    box-shadow: 0 0 20px #d6a94744;
+}
+
+.enter:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px #d6a947;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SITE */
+
+#site {
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    background: #11141a;
+    border-bottom: 2px solid #b68b40;
+    padding: 22px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo {
+    font: 700 21px Cinzel, serif;
+    color: var(--light);
+    letter-spacing: 3px;
+}
+
+.header-right {
+    color: #c8a765;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+aside {
+    width: 250px;
+    flex-shrink: 0;
+    background: #12151b;
+    border-right: 1px solid #a87b34;
+    padding: 30px 18px;
+}
+
+.aside-title {
+    color: var(--gold);
+    font: 600 14px Cinzel, serif;
+    letter-spacing: 3px;
+    margin: 15px 10px 25px;
+}
+
+aside a {
+    display: block;
+    text-decoration: none;
+    color: #bdb4a3;
+    padding: 15px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: .35s;
+}
+
+aside a:hover, aside a.active {
+    color: var(--light);
+    background: #d6a94712;
+    border-color: #d6a94766;
+    box-shadow: inset 3px 0 var(--gold);
+    transform: translateX(4px);
+}
+
+main {
+    flex: 1;
+    min-width: 0;
+    padding: 38px;
+}
+
+/* BOAS-VINDAS */
+
+.welcome {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, #252017, #181a20);
+    border: 1px solid #c49a45;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 35px #d6a9470c;
+}
+
+.welcome::after {
+    content: "𓂀";
+    position: absolute;
+    right: 35px;
+    top: 10px;
+    font-size: 130px;
+    color: var(--gold);
+    opacity: .10;
+}
+
+.welcome small {
+    color: var(--gold);
+    letter-spacing: 4px;
+    font-size: 10px;
+}
+
+.welcome h2 {
+    font: 600 28px Cinzel, serif;
+    color: var(--light);
+    margin: 18px 0;
+}
+
+.welcome p {
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* ESCARAVELHO */
+
+.scarab {
+    font-size: 65px;
+    display: inline-block;
+    color: #e8bd60;
+    filter: drop-shadow(0 0 15px #d6a947);
+    animation: scarabFloat 4s ease-in-out infinite;
+}
+
+@keyframes scarabFloat {
+    0%,100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 45px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    padding: 25px;
+    background: linear-gradient(145deg, #22252b, #14171d);
+    border: 1px solid #a87b344d;
+    transition: .4s;
+}
+
+.card::after {
+    content: "✧";
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 35px;
+    color: var(--gold);
+    opacity: .4;
+}
+
+.card:hover {
+    border-color: var(--light);
+    transform: translateY(-7px);
+    box-shadow: 0 10px 35px #d6a94725;
+}
+
+.card span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.card h2 {
+    font: 700 36px Cinzel, serif;
+    color: var(--light);
+    margin-top: 15px;
+    text-shadow: 0 0 15px #d6a94755;
+}
+
+/* TITULOS */
+
+.section-title {
+    font: 600 21px Cinzel, serif;
+    color: var(--light);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #aaa08e;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+/* EXERCICIOS */
+
+.exercicios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.exercicio {
+    position: relative;
+    padding: 25px;
+    background: linear-gradient(145deg, #20232a, #14171d);
+    border: 1px solid #b68b4055;
+    transition: .4s;
+}
+
+.exercicio::before {
+    content: "𓆣";
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 35px;
+    color: var(--gold);
+    opacity: .35;
+}
+
+.exercicio:hover {
+    transform: translateY(-5px);
+    border-color: var(--light);
+    box-shadow: 0 10px 25px #d6a94720;
+}
+
+.exercicio h3 {
+    font: 600 16px Cinzel, serif;
+    color: var(--light);
+    margin-bottom: 15px;
+}
+
+.exercicio p {
+    color: #b9af9e;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.status {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #58401c;
+    color: #ffdc92;
+    font-size: 11px;
+    border: 1px solid #b68b40;
+}
+
+.corrigido {
+    background: #24432f;
+    color: #b8e4a9;
+    border-color: #67956b;
+}
+
+.avaliacao {
+    border-top: 1px solid #c49a4533;
+    padding-top: 15px;
+    margin-top: 18px;
+    color: #b9af9e;
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* LINHA DO TEMPO */
+
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.month {
+    background: linear-gradient(145deg, #282117, #171a20);
+    border: 1px solid #a87b3455;
+    padding: 20px 12px;
+    text-align: center;
+    color: #e8c77d;
+    font-family: Cinzel, serif;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.month:hover, .month.selected {
+    border-color: #ffe5a0;
+    background: #49351b;
+    box-shadow: 0 0 20px #d6a94735;
+    transform: translateY(-4px);
+}
+
+.month small {
+    display: block;
+    color: #b5aa92;
+    margin-top: 8px;
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+}
+
+/* AVALIAÇÕES */
+
+.correction {
+    background: linear-gradient(135deg, #2b2418, #171a20);
+    border: 2px solid #b68b40;
+    padding: 25px;
+    position: relative;
+    margin-top: 25px;
+}
+
+.correction h3 {
+    font: 600 17px Cinzel, serif;
+    color: #ffe5a0;
+    margin-bottom: 18px;
+}
+
+.correction p {
+    color: #c8b998;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.correction input, .correction textarea {
+    width: 100%;
+    background: #11141a;
+    color: white;
+    border: 1px solid #9d773a;
+    padding: 12px;
+    margin-top: 12px;
+    font: inherit;
+    outline: none;
+}
+
+.correction input:focus, .correction textarea:focus {
+    border-color: #ffe5a0;
+    box-shadow: 0 0 10px #d6a94733;
+}
+
+/* BOTÃO */
+
+.gold-button {
+    margin-top: 15px;
+    background: linear-gradient(120deg, #74501c, #d6a947);
+    color: #100d08;
+    border: 1px solid #ffe5a0;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.gold-button:hover {
+    box-shadow: 0 0 25px #d6a94788;
+    transform: translateY(-2px);
+}
+
+/* ANIMAÇÕES DE ROLAGEM */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .8s, transform .8s;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RODAPÉ */
+
+footer {
+    padding: 30px;
+    text-align: center;
+    background: #11141a;
+    border-top: 2px solid #a87b34;
+    color: #c49a45;
+    font: 12px Cinzel, serif;
+    letter-spacing: 3px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:850px) {
+    .layout { flex-direction: column; }
+
+    aside {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .aside-title { display: none; }
+    aside a { white-space: nowrap; }
+    main { padding: 22px; }
+    .cards { grid-template-columns: 1fr; }
+    .exercicios { grid-template-columns: 1fr; }
+    header { flex-wrap: wrap; }
+    .timeline { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+<div id="cursorLight"></div>
+
+<!-- VINHETA -->
+
+<section class="intro" id="intro">
+
+    <div class="sun"></div>
+
+    <div class="hieroglyphs top">
+        𓂀 𓋹 𓆣 𓇳 𓊖 𓏏 𓂀 𓋹
+    </div>
+
+    <div class="hieroglyphs bottom">
+        𓆣 𓇳 𓊖 𓏏 𓂀 𓋹 𓆣
+    </div>
+
+    <div class="pyramids">
+        <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMax slice">
+            <path d="M0 350 L260 350 L130 100 Z" fill="#8d682e"/>
+            <path d="M130 100 L260 350 L190 350 Z" fill="#d1a653"/>
+            <path d="M250 350 L620 350 L435 20 Z" fill="#74552b"/>
+            <path d="M435 20 L620 350 L530 350 Z" fill="#d6aa54"/>
+            <path d="M650 350 L940 350 L795 85 Z" fill="#80602f"/>
+            <path d="M795 85 L940 350 L875 350 Z" fill="#d6aa54"/>
+            <path d="M0 350 Q500 310 1000 350 L1000 400 L0 400 Z" fill="#181719"/>
+        </svg>
+    </div>
+
+    <div class="intro-content">
+        <div class="eye">𓂀</div>
+        <h1>PORTFÓLIO 2027</h1>
+        <p>DESENVOLVIMENTO DE SISTEMAS</p>
+
+        <button class="enter" id="entrar">
+            ✧ ENTRAR NO TEMPLO ✧
+        </button>
+    </div>
+
+    <div class="door left"></div>
+    <div class="door right"></div>
+
+</section>
+
+<!-- SITE PRINCIPAL -->
+
+<div id="site">
+
+<header>
+    <div class="logo">𓋹 ARQUIVOS DO EGITO</div>
+    <div class="header-right">TEMPLO DO CONHECIMENTO • 2027</div>
+</header>
+
+<div class="layout">
+
+<aside>
+    <div class="aside-title">𓂀 EXPLORAR</div>
+
+    <a class="active" href="#inicio">𓇳 Visão geral</a>
+    <a href="#exercicios">𓆣 Exercícios</a>
+    <a href="#timeline">𓋹 Linha do tempo</a>
+    <a href="#avaliacoes">𓊖 Avaliações</a>
+    <a href="#progresso">𓇳 Minha evolução</a>
+</aside>
+
+<main>
+
+<section class="welcome reveal" id="inicio">
+    <small>𓂀 CÂMARA DO CONHECIMENTO</small>
+
+    <h2>Bem-vindo à sua jornada!</h2>
+
+    <p>
+        Cada atividade representa uma descoberta.
+        Este espaço reúne os registros, desafios e
+        conquistas da jornada de aprendizado em
+        Desenvolvimento de Sistemas durante 2027.
+    </p>
+</section>
+
+<section class="cards reveal">
+
+    <div class="card">
+        <span>𓆣 Total de exercícios</span>
+        <h2 id="totalExercicios">02</h2>
+    </div>
+
+    <div class="card">
+        <span>𓋹 Exercícios corrigidos</span>
+        <h2 id="corrigidos">01</h2>
+    </div>
+
+    <div class="card">
+        <span>𓇳 Pendentes de correção</span>
+        <h2 id="pendentes">01</h2>
+    </div>
+
+</section>
+
+<section id="exercicios" class="reveal">
+
+    <h2 class="section-title">𓆣 Registros de atividades</h2>
+
+    <p class="subtitle">
+        O conhecimento é construído a cada descoberta.
+    </p>
+
+    <div class="exercicios" id="listaExercicios">
+
+        <article class="exercicio">
+            <h3>Exercício 01 — HTML</h3>
+            <p>Primeira atividade do portfólio acadêmico.</p>
+            <span class="status">Aguardando correção</span>
+
+            <div class="avaliacao">
+                Nota: Aguardando avaliação
+                <br>
+                Professor: Sem observações.
+            </div>
+        </article>
+
+        <article class="exercicio">
+            <h3>Exercício 02 — CSS</h3>
+            <p>Atividade de estilização e estrutura visual.</p>
+            <span class="status corrigido">Corrigido</span>
+
+            <div class="avaliacao">
+                Nota: 10,0
+                <br>
+                Professor: Excelente atividade!
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section id="timeline" class="reveal" style="margin-top:50px">
+
+    <div class="scarab">𓆣</div>
+
+    <h2 class="section-title">𓇳 Jornada de 2027</h2>
+
+    <p class="subtitle">
+        Do primeiro ao último registro de aprendizado.
+    </p>
+
+    <div class="timeline">
+
+        <button class="month" data-month="Janeiro">JANEIRO<small>01 / 2027</small></button>
+        <button class="month" data-month="Fevereiro">FEVEREIRO<small>02 / 2027</small></button>
+        <button class="month" data-month="Março">MARÇO<small>03 / 2027</small></button>
+        <button class="month" data-month="Abril">ABRIL<small>04 / 2027</small></button>
+        <button class="month" data-month="Maio">MAIO<small>05 / 2027</small></button>
+        <button class="month" data-month="Junho">JUNHO<small>06 / 2027</small></button>
+        <button class="month" data-month="Julho">JULHO<small>07 / 2027</small></button>
+        <button class="month" data-month="Agosto">AGOSTO<small>08 / 2027</small></button>
+        <button class="month" data-month="Setembro">SETEMBRO<small>09 / 2027</small></button>
+        <button class="month" data-month="Outubro">OUTUBRO<small>10 / 2027</small></button>
+        <button class="month" data-month="Novembro">NOVEMBRO<small>11 / 2027</small></button>
+        <button class="month" data-month="Dezembro">DEZEMBRO<small>12 / 2027</small></button>
+
+    </div>
+
+    <p id="mesSelecionado" style="margin-top:20px;color:#e8c77d">
+        Selecione um mês para consultar os registros.
+    </p>
+
+</section>
+
+<section id="avaliacoes" class="reveal" style="margin-top:50px">
+
+    <h2 class="section-title">𓋹 Câmara das avaliações</h2>
+
+    <p class="subtitle">
+        Área demonstrativa para notas e observações do professor.
+    </p>
+
+    <div class="correction">
+
+        <h3>REGISTRO DE CORREÇÃO</h3>
+
+        <p>
+            Espaço para registrar uma avaliação de exemplo.
+            Este formulário ainda não envia informações
+            para uma conta de professor.
+        </p>
+
+        <input type="text" id="nota" placeholder="Nota da atividade">
+
+        <textarea id="comentario" rows="4"
+            placeholder="Comentários e observações..."></textarea>
+
+        <button class="gold-button" id="salvarAvaliacao">
+            REGISTRAR EXEMPLO
+        </button>
+
+        <p id="resultadoAvaliacao" style="margin-top:15px"></p>
+
+    </div>
+
+</section>
+
+<section id="progresso" class="reveal" style="margin-top:50px">
+
+    <h2 class="section-title">𓇳 Minha evolução</h2>
+
+    <p class="subtitle">
+        Cada etapa representa uma nova conquista.
+    </p>
+
+    <div class="card">
+        <span>Progresso de correções</span>
+        <h2 id="percentual">50%</h2>
+
+        <div style="height:9px;background:#35302a;margin-top:18px">
+            <div id="barra"
+                style="height:100%;width:50%;background:linear-gradient(90deg,#8b6125,#ffe5a0);transition:width 1s">
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</main>
+</div>
+
+<footer>
+    𓋹 PORTFÓLIO ACADÊMICO • 2027 • DESENVOLVIMENTO DE SISTEMAS 𓋹
+</footer>
+
+</div>
+
+<script>
+
+/* ELEMENTOS */
+
+const intro = document.getElementById("intro");
+const site = document.getElementById("site");
+const entrar = document.getElementById("entrar");
+
+/* VINHETA E ABERTURA DAS PORTAS */
+
+entrar.addEventListener("click", () => {
+
+    intro.classList.add("opening");
+
+    setTimeout(() => {
+        intro.classList.add("hidden");
+        site.style.display = "block";
+        iniciarAnimacoes();
+    }, 1300);
+
+    setTimeout(() => {
+        intro.style.display = "none";
+    }, 2800);
+
+});
+
+/* PARTICULAS DOURADAS */
+
+function criarParticulas() {
+
+    const container = document.getElementById("particles");
+
+    for (let i = 0; i < 45; i++) {
+
+        const particula = document.createElement("div");
+
+        particula.className = "particle";
+
+        const tamanho = Math.random() * 4 + 2;
+
+        particula.style.width = tamanho + "px";
+        particula.style.height = tamanho + "px";
+
+        particula.style.left = Math.random() * 100 + "%";
+
+        particula.style.animationDuration =
+            (Math.random() * 12 + 8) + "s";
+
+        particula.style.animationDelay =
+            (Math.random() * 12) + "s";
+
+        container.appendChild(particula);
+
+    }
+
+}
+
+criarParticulas();
+
+/* LUZ DO CURSOR */
+
+const cursorLight = document.getElementById("cursorLight");
+
+document.addEventListener("mousemove", (event) => {
+
+    cursorLight.style.left = event.clientX + "px";
+    cursorLight.style.top = event.clientY + "px";
+
+});
+
+/* ANIMAÇÕES AO ROLAR */
+
+function iniciarAnimacoes() {
+
+    const elementos = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    }, { threshold: 0.12 });
+
+    elementos.forEach(elemento => {
+        observer.observe(elemento);
+    });
+
+}
+
+/* LINHA DO TEMPO */
+
+const meses = document.querySelectorAll(".month");
+const mesSelecionado = document.getElementById("mesSelecionado");
+
+meses.forEach((mes) => {
+
+    mes.addEventListener("click", () => {
+
+        meses.forEach(item => {
+            item.classList.remove("selected");
+        });
+
+        mes.classList.add("selected");
+
+        mesSelecionado.textContent =
+            "Você está explorando os registros de " +
+            mes.dataset.month + " de 2027.";
+
+    });
+
+});
+
+/* AVALIAÇÃO DEMONSTRATIVA */
+
+document.getElementById("salvarAvaliacao")
+.addEventListener("click", () => {
+
+    const nota = document.getElementById("nota").value.trim();
+
+    const comentario = document.getElementById("comentario").value.trim();
+
+    const resultado = document.getElementById("resultadoAvaliacao");
+
+    if (!nota || !comentario) {
+
+        resultado.textContent =
+            "Preencha a nota e o comentário para visualizar o registro.";
+
+        return;
+
+    }
+
+    resultado.textContent =
+        "Exemplo registrado — Nota: " + nota +
+        " | Comentário: " + comentario;
+
+});
+
+/* PROGRESSO DEMONSTRATIVO */
+
+const total = 2;
+const corrigidos = 1;
+
+const percentual = Math.round((corrigidos / total) * 100);
+
+document.getElementById("percentual").textContent =
+    percentual + "%";
+
+document.getElementById("barra").style.width =
+    percentual + "%";
+
+</script>
+
+</body>
+</html>
